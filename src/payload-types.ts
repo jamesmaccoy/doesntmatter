@@ -16,7 +16,7 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
-    bookings: Booking;
+    policys: Policy;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -683,7 +683,7 @@ export interface Form {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "bookings".
  */
-export interface Booking {
+export interface Policy {
   id: string;
   title: string;
   customer?: (string | null) | User;

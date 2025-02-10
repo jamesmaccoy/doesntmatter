@@ -40,11 +40,11 @@ export const Users: CollectionConfig = {
       type: 'select',
       options: [
         { label: 'Admin', value: 'admin' },
-        { label: 'Customer', value: 'customer' },
-        { label: 'Guest', value: 'guest' },
+        { label: 'Assured', value: 'assure' },
+        { label: 'Beneficiary', value: 'beneficiary' },
       ],
       hasMany: true,
-      defaultValue: ['guest'],
+      defaultValue: ['beneficiary'],
     },
     {
       name: 'addedBy',
