@@ -32,7 +32,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    bookings: BookingsSelect<false> | BookingsSelect<true>;
+    policys: PolicysSelect<false> | PolicysSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -799,8 +799,8 @@ export interface PayloadLockedDocument {
         value: string | User;
       } | null)
     | ({
-        relationTo: 'bookings';
-        value: string | Booking;
+        relationTo: 'policys';
+        value: string | Policy;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1161,7 +1161,7 @@ export interface UsersSelect<T extends boolean = true> {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "bookings_select".
  */
-export interface BookingsSelect<T extends boolean = true> {
+export interface PolicysSelect<T extends boolean = true> {
   title?: T;
   customer?: T;
   guests?: T;
