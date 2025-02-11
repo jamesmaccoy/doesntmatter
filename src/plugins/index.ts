@@ -83,13 +83,13 @@ export const plugins: Plugin[] = [
           ...defaultFields,
           {
             type: 'relationship',
-            name: 'customer',
+            name: 'assured',
             access: {
               read: isAdminField,
               update: isAdminField,
               create: isAdminField,
             },
-            label: 'Customer',
+            label: 'Assured',
             relationTo: 'users',
             admin: {
               readOnly: true,

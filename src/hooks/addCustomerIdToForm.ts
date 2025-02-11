@@ -9,7 +9,7 @@ export const addCustomerToForm =
       payload.logger.info(
         `User is logged in, adding customer to form. FormID: ${data.form}, CustomerID: ${user?.id}, SubmissionID: ${data?.id}`,
       )
-      data.customer = user?.id
+      data.assured = user?.id
     }
 
     console.log(data)

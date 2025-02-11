@@ -21,7 +21,7 @@ export default function RegisterPage() {
       email: '',
       password: '',
       name: '',
-      role: 'customer',
+      role: 'assured',
     },
   })
 

@@ -6,21 +6,21 @@ import { slugField } from '@/fields/slug'
 import { CollectionConfig } from 'payload'
 import { adminOrSelfOrGuests } from './access/adminOrSelfOrGuests'
 
-export const Booking: CollectionConfig = {
-  slug: 'bookings',
+export const Policy: CollectionConfig = {
+  slug: 'policys',
   labels: {
-    singular: 'Booking',
-    plural: 'Bookings',
+    singular: 'Policy',
+    plural: 'Policys',
   },
   typescript: {
-    interface: 'Booking',
+    interface: 'Policy',
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'fromDate', 'toDate', 'slug', 'customer'],
+    defaultColumns: ['title', 'fromDate', 'toDate', 'slug', 'assured'],
   },
   access: {
-    read: adminOrSelfOrGuests('customer', 'guests'),
+    read: adminOrSelfOrGuests('assured', 'beneficiary'),
     create: isAdmin,
     delete: isAdmin,
   },
@@ -35,12 +35,12 @@ export const Booking: CollectionConfig = {
       },
     },
     {
-      name: 'customer',
+      name: 'assured',
       type: 'relationship',
       relationTo: 'users',
       filterOptions: {
         role: {
-          equals: 'customer',
+          equals: 'assured',
         },
       },
       access: {
@@ -48,12 +48,12 @@ export const Booking: CollectionConfig = {
       },
     },
     {
-      name: 'guests',
+      name: 'beneficiary',
       type: 'relationship',
       hasMany: true,
       relationTo: 'users',
       access: {
-        update: adminOrSelfField('customer'),
+        update: adminOrSelfField('assured'),
       },
       admin: {
         isSortable: true,
