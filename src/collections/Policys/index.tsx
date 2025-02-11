@@ -17,7 +17,7 @@ export const Policy: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'fromDate', 'toDate', 'slug', 'customer'],
+    defaultColumns: ['title', 'fromDate', 'toDate', 'slug', 'assured'],
   },
   access: {
     read: adminOrSelfOrGuests('assured', 'beneficiary'),

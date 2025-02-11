@@ -40,7 +40,7 @@ export const Users: CollectionConfig = {
       type: 'select',
       options: [
         { label: 'Admin', value: 'admin' },
-        { label: 'Assured', value: 'assure' },
+        { label: 'Assured', value: 'assured' },
         { label: 'Beneficiary', value: 'beneficiary' },
       ],
       hasMany: true,

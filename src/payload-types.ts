@@ -312,7 +312,7 @@ export interface Category {
 export interface User {
   id: string;
   name?: string | null;
-  role?: ('admin' | 'customer' | 'guest')[] | null;
+  role?: ('admin' | 'assured' | 'guest')[] | null;
   addedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
@@ -686,7 +686,7 @@ export interface Form {
 export interface Policy {
   id: string;
   title: string;
-  customer?: (string | null) | User;
+  assured?: (string | null) | User;
   guests?: (string | User)[] | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -737,7 +737,7 @@ export interface FormSubmission {
         id?: string | null;
       }[]
     | null;
-  customer?: (string | null) | User;
+  assured?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
 }
@@ -1163,7 +1163,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface PolicysSelect<T extends boolean = true> {
   title?: T;
-  customer?: T;
+  assured?: T;
   guests?: T;
   slug?: T;
   slugLock?: T;
@@ -1346,7 +1346,7 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
-  customer?: T;
+  assured?: T;
   updatedAt?: T;
   createdAt?: T;
 }
