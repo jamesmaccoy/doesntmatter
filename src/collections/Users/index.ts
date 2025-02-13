@@ -6,7 +6,7 @@ import { adminOrSelf } from '@/access/adminOrSelf'
 import { validateRole } from './hooks/validateRole'
 import { adminSelfOrAdded } from './access/adminSelfOrAdded'
 import { fillAddedByField } from './hooks/fillAddedByField'
-import { adminSelfOrGuest } from './access/adminSelfOrGuest'
+import { adminSelfOrBeneficiary } from './access/adminSelfOrBeneficiary'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -18,7 +18,7 @@ export const Users: CollectionConfig = {
     create: adminOrCreateRoleCustomer,
     delete: isAdmin,
     unlock: isAdmin,
-    read: adminSelfOrGuest,
+    read: adminSelfOrBeneficiary,
     update: adminOrSelf('id'),
   },
   admin: {

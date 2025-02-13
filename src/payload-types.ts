@@ -281,11 +281,65 @@ export interface Category {
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
+
 export interface Page {
   id: string;
-  name?: string | null;
-  role?: ('admin' | 'assured' | 'guest')[] | null;
-  addedBy?: (string | null) | User;
+  title: string;
+  hero: {
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: string | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    media?: (string | null) | Media;
+  };
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -652,7 +706,7 @@ export interface Policy {
   id: string;
   title: string;
   assured?: (string | null) | User;
-  guests?: (string | User)[] | null;
+  beneficiary?: (string | User)[] | null;
   slug?: string | null;
   slugLock?: boolean | null;
   post: string | Post;
@@ -1146,7 +1200,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface PolicysSelect<T extends boolean = true> {
   title?: T;
   assured?: T;
-  guests?: T;
+  beneficiary?: T;
   slug?: T;
   slugLock?: T;
   post?: T;

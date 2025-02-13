@@ -23,7 +23,7 @@ export default async function Policys() {
     ...(policy.post as Pick<Post, 'meta' | 'slug' | 'title'>),
     fromDate: policy.fromDate,
     toDate: policy.toDate,
-    guests: policy.guests,
+    beneficiary: policy.beneficiary,
     id: policy.id,
   }))
 
@@ -31,7 +31,7 @@ export default async function Policys() {
     ...(policy.post as Pick<Post, 'meta' | 'slug' | 'title'>),
     fromDate: policy.fromDate,
     toDate: policy.toDate,
-    guests: policy.guests,
+    beneficiary: policy.beneficiary,
     id: policy.id,
   }))
 
@@ -113,7 +113,7 @@ const getPolicys = async (type: 'upcoming' | 'past', currentUser: User) => {
     select: {
       slug: true,
       post: true,
-      guests: true,
+      beneficiary: true,
       fromDate: true,
       toDate: true,
     },

@@ -9,7 +9,7 @@ export const adminOrSelfField =
       return true
     }
 
-    if (!user.role?.includes('assured')) {
+    if (!user.role?.includes('assure')) {
       return false
     }
 

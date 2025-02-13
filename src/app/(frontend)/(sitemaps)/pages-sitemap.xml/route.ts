@@ -43,13 +43,12 @@ const getPagesSitemap = unstable_cache(
 
     const sitemap = results.docs
       ? results.docs
-          .filter((page) => Boolean(page?.slug))
-          .map((page) => {
-            return {
-              loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
-              lastmod: page.updatedAt || dateFallback,
-            }
-          })
+          .filter((page) => (page as any)?.slug) // Ensure slug exists
+          .map((page) => ({
+            loc:
+              (page as any).slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${(page as any).slug}`,
+            lastmod: (page as any).updatedAt || dateFallback,
+          }))
       : []
 
     return [...defaultSitemap, ...sitemap]

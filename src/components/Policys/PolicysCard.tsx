@@ -9,7 +9,7 @@ type Props = {
   policy: {
     fromDate: string
     toDate: string
-    guests: (string | User)[] | null | undefined
+    beneficiary: (string | User)[] | null | undefined
     id: string
     slug?: string | null | undefined
     title: string
@@ -48,12 +48,12 @@ const PoliciesCard: FC<Props> = ({ policy }) => {
               {formatDate(new Date(policy.toDate), 'PPP')}
             </div>
           </div>
-          {policy.guests && policy.guests?.length > 0 && (
+          {policy.beneficiary && policy.beneficiary?.length > 0 && (
             <div className="flex items-center gap-2">
               <div>
                 <UsersIcon className="size-4" />
               </div>
-              <div className="font-medium text-sm">{policy.guests?.length} Guests</div>
+              <div className="font-medium text-sm">{policy.beneficiary?.length} Beneficiary </div>
             </div>
           )}
         </div>
